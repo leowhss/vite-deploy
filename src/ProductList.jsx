@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ProductList.css";
 import CartItem from "./CartItem";
 import { addItem } from "./CartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function ProductList() {
   const [showCart, setShowCart] = useState(false);
@@ -251,8 +251,7 @@ function ProductList() {
     },
   ];
   const styleObj = {
-    // backgroundColor: "#4CAF50",
-    backgroundColor: "darkblue",
+    backgroundColor: "#4CAF50",
     color: "#fff!important",
     padding: "15px",
     display: "flex",
@@ -298,6 +297,12 @@ function ProductList() {
     }));
   };
 
+  const cartItems = useSelector((state) => state.cart.items);
+
+  const totalItems = () => {
+    return cartItems.reduce((total, item) => total + item.quantity, 0);
+  };
+
   return (
     <div>
       <div className="navbar" style={styleObj}>
@@ -327,6 +332,18 @@ function ProductList() {
             {" "}
             <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
               <h1 className="cart">
+                <label
+                  style={{
+                    zIndex: 1,
+                    position: "relative",
+                    top: "20px",
+                    left: "40px",
+                    fontSize: "1.5rem",
+                    cursor: "pointer",
+                  }}
+                >
+                  {totalItems()}
+                </label>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 256 256"

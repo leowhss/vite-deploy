@@ -5,6 +5,7 @@ import "./CartItem.css";
 
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector((state) => state.cart.items);
+
   const dispatch = useDispatch();
 
   // Calculate total amount for all products in the cart
