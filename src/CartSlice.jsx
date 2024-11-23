@@ -10,43 +10,35 @@ export const CartSlice = createSlice({
     items: [], // Initialize items as an empty array
   },
   reducers: {
-    // addItem: (state, action) => {
-    //   const existingItem = state.cartItems.find(
-    //     (item) => item.id === action.payload.id
-    //   );
-    //   if (existingItem) {
-    //     existingItem.quantity += 1;
-    //   } else {
-    //     state.cartItems.push({ ...action.payload, quantity: 1 });
-    //   }
-
     addItem: (state, action) => {
       const { name, image, cost } = action.payload;
       const existingItem = state.items.find((item) => item.name === name);
+
       if (existingItem) {
         existingItem.quantity++;
       } else {
         state.items.push({ name, image, cost, quantity: 1 });
       }
-    },
-  },
+    }, //end addItem
 
-  removeItem: (state, action) => {
-    state.cartItems = state.cartItems.filter(
-      (item) => item.id !== action.payload
-    );
+    removeItem: (state, action) => {
+      const item = action.payload;
+      const existingItem = state.items.find((i) => i.name === item.name);
 
-    state.items = state.items.filter((item) => item.name !== action.payload);
-  },
+      if (existingItem) {
+        state.items = state.items.filter((i) => i.name !== item.name);
+      }
+    }, //end removeItem
 
-  updateQuantity: (state, action) => {
-    const { name, quantity } = action.payload;
-    const itemToUpdate = state.items.find((item) => item.name === name);
-    if (itemToUpdate) {
-      itemToUpdate.quantity = quantity;
-    }
-  },
-});
+    updateQuantity: (state, action) => {
+      const { name, quantity } = action.payload;
+      const itemToUpdate = state.items.find((item) => item.name === name);
+      if (itemToUpdate) {
+        itemToUpdate.quantity = quantity;
+      }
+    }, //end updateQuantity
+  }, //end reducers
+}); //end createSlice
 
 export const { addItem, removeItem, updateQuantity } = CartSlice.actions;
 
