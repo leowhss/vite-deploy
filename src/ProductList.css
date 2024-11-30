@@ -39,6 +39,10 @@ body {
    
 }
 
+.plant-title {
+    align-items: center;
+}
+
 /* Product Grid */
 .product-grid {
     display:flex;
@@ -196,6 +200,12 @@ body {
     }
 }
 /* ProductList.css */
+
+.category-name {
+    font-size: 26px;
+    text-align: center;
+    margin-top: 10px;
+}
 
 .product-button {
     background-color: #4CAF50; /* Green */

@@ -314,8 +314,8 @@ function ProductList() {
             />
             <a href="/" style={{ textDecoration: "none" }}>
               <div>
-                <h3 style={{ color: "white" }}>Warhammer Nursery</h3>
-                <i style={{ color: "white" }}>Where Green Meets Serenity</i>
+                <h3 style={{ color: "white" }}>Lush Nursery</h3>
+                <i style={{ color: "white" }}>Where Greenary Meets Serenity</i>
               </div>
             </a>
           </div>
@@ -323,7 +323,12 @@ function ProductList() {
         <div style={styleObjUl}>
           <div>
             {" "}
-            <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>
+            <a
+              className="plant-title"
+              href="#"
+              onClick={(e) => handlePlantsClick(e)}
+              style={styleA}
+            >
               Plants
             </a>
           </div>
@@ -337,7 +342,7 @@ function ProductList() {
                     zIndex: 1,
                     position: "relative",
                     top: "20px",
-                    left: "40px",
+                    left: "5px",
                     fontSize: "1.5rem",
                     cursor: "pointer",
                   }}
@@ -374,7 +379,7 @@ function ProductList() {
         <div className="product-grid">
           {plantsArray.map((category, index) => (
             <div key={index}>
-              <h1>
+              <h1 className="category-name">
                 <div>{category.category}</div>
               </h1>
               <div className="product-list">

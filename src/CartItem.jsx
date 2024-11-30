@@ -16,6 +16,10 @@ const CartItem = ({ onContinueShopping }) => {
     );
   };
 
+  const calculateTotalPlants = () => {
+    return cart.reduce((total, item) => total + Number(item.quantity), 0);
+  };
+
   const handleContinueShopping = (e) => {
     onContinueShopping(e);
   };
@@ -43,7 +47,10 @@ const CartItem = ({ onContinueShopping }) => {
 
   return (
     <div className="cart-container">
-      <h2 style={{ color: "black" }}>Total Plants : {cart.length}</h2>
+      <h2 style={{ color: "black" }}>
+        {/* Total Plants : {cart.length} : {calculateTotalPlants()} */}
+        Total Plants : {calculateTotalPlants()}
+      </h2>
       <h2 style={{ color: "black" }}>
         Total Cart Amount: ${calculateTotalAmount()}
       </h2>
